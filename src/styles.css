@@ -1,0 +1,57 @@
+.entire-content {
+  padding: 50px;
+  margin-top: 50px;
+  border: 2px solid rgb(65, 65, 97);
+}
+
+.current-time {
+  font-size: small;
+  padding-bottom: 5px;
+}
+
+.search-bar {
+  padding: 10px;
+  text-align: center;
+}
+
+.additional-info {
+  list-style-type: none;
+  line-height: 30px;
+  margin: 50px 0;
+  font-size: 15px;
+}
+
+.searched-city {
+  font-size: 30px;
+  padding-top: 20px;
+  margin-bottom: 0;
+}
+
+#current-temp {
+  font-size: 80px;
+  padding: 0;
+}
+
+.temp-units {
+  padding-top: 30px;
+}
+
+#celsius-temp {
+  text-decoration: none;
+}
+
+#fahrenheit-temp {
+  text-decoration: none;
+}
+
+.next-5-days {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+.weather-forecast {
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid rgb(118, 118, 148);
+}
