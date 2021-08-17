@@ -15,90 +15,92 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="container entire-content">
-      <div class="row">
-        <div class="search-bar">
-          <h3>
-            Current Location: <span id="current-location">Toronto, ON</span>
-          </h3>
-          <div class="current-time"></div>
-          <form id="search-form">
-            <div class="row">
-              <div class="col-8">
-                <input
-                  class="form-control mr-sm-2"
-                  id="search-bar"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-              </div>
-              <div class="col-2">
-                <input
-                  class="btn btn-dark"
-                  id="search-button"
-                  type="submit"
-                  value="Search"
-                />
-              </div>
-              <div class="col-2">
-                <input
-                  class="btn btn-light"
-                  id="current-button"
-                  type="submit"
-                  value="Current"
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <ul class="additional-info">
-            <li>🌅 Sunrise: <span id="sunrise">05:30</span></li>
-            <li>🌄 Sunset: <span id="sunset">17:00</span></li>
-            <li>💧 Humidity: <span id="humidity">54%</span></li>
-            <li>🌬 Wind: <span id="wind">15km/h</span></li>
-            <li>💨 Wind Gust: <span id="wind-gust">20km/h</span></li>
-            <li>🛣 Visibility: <span id="visibility">20km/h</span></li>
-          </ul>
-        </div>
-        <div class="col-6">
-          <div class="row">
-            <p class="searched-city">Hanoi, Vietnam</p>
-            <span>
-              <strong id="current-temp">33°C</strong>
-              Feels like <span id="feels-like-temp">38°C</span> <br />
-              Last update July 20th, 2021 at 9pm EST
-            </span>
-          </div>
-        </div>
-        <div class="col-2 temp-units">
-          <a href="#" id="celsius-temp">°C</a> |
-          <a href="#" id="fahrenheit-temp">°F</a>
-        </div>
-        <p class="next-5-days">Forecast for the next 5 days</p>
+    <div class="entire-content">
+      <div class="container">
         <div class="row">
-          <div class="col weather-forecast">
-            <strong>Monday</strong>
-            <p>☀️<br />30°C | 40°C</p>
+          <div class="search-bar">
+            <h3>
+              Current Location: <span id="current-location">Toronto, ON</span>
+            </h3>
+            <div class="current-time"></div>
+            <form id="search-form">
+              <div class="row">
+                <div class="col-8">
+                  <input
+                    class="form-control mr-sm-2"
+                    id="search-bar"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    class="btn btn-dark"
+                    id="search-button"
+                    type="submit"
+                    value="Search"
+                  />
+                </div>
+                <div class="col-2">
+                  <input
+                    class="btn btn-light"
+                    id="current-button"
+                    type="submit"
+                    value="Current"
+                  />
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="col weather-forecast">
-            <strong>Tuesday</strong>
-            <p>☀️<br />30°C | 40°C</p>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <ul class="additional-info">
+              <li>🌅 Sunrise: <span id="sunrise">05:30</span></li>
+              <li>🌄 Sunset: <span id="sunset">17:00</span></li>
+              <li>💧 Humidity: <span id="humidity">54%</span></li>
+              <li>🌬 Wind: <span id="wind">15km/h</span></li>
+              <li>💨 Wind Gust: <span id="wind-gust">20km/h</span></li>
+              <li>🛣 Visibility: <span id="visibility">20km/h</span></li>
+            </ul>
           </div>
-          <div class="col weather-forecast">
-            <strong>Wednesday</strong>
-            <p>☀️<br />30°C | 40°C</p>
+          <div class="col-6">
+            <div class="row">
+              <p class="searched-city">Hanoi, Vietnam</p>
+              <span>
+                <strong id="current-temp">33°C</strong>
+                Feels like <span id="feels-like-temp">38°C</span> <br />
+                Last update July 20th, 2021 at 9pm EST
+              </span>
+            </div>
           </div>
-          <div class="col weather-forecast">
-            <strong>Thursday</strong>
-            <p>☀️<br />30°C | 40°C</p>
+          <div class="col-2 temp-units">
+            <a href="#" id="celsius-temp">°C</a> |
+            <a href="#" id="fahrenheit-temp">°F</a>
           </div>
-          <div class="col weather-forecast">
-            <strong>Friday</strong>
-            <p>☀️<br />30°C | 40°C</p>
+          <p class="next-5-days">Forecast for the next 5 days</p>
+          <div class="row">
+            <div class="col weather-forecast">
+              <strong>Monday</strong>
+              <p>☀️<br />30°C | 40°C</p>
+            </div>
+            <div class="col weather-forecast">
+              <strong>Tuesday</strong>
+              <p>☀️<br />30°C | 40°C</p>
+            </div>
+            <div class="col weather-forecast">
+              <strong>Wednesday</strong>
+              <p>☀️<br />30°C | 40°C</p>
+            </div>
+            <div class="col weather-forecast">
+              <strong>Thursday</strong>
+              <p>☀️<br />30°C | 40°C</p>
+            </div>
+            <div class="col weather-forecast">
+              <strong>Friday</strong>
+              <p>☀️<br />30°C | 40°C</p>
+            </div>
           </div>
         </div>
       </div>
