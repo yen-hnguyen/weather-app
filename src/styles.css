@@ -1,7 +1,12 @@
+body {
+  background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+
 .entire-content {
   padding: 50px;
   margin-top: 50px;
   border: 2px solid rgb(65, 65, 97);
+  font-family: "Merienda";
 }
 
 .current-time {
