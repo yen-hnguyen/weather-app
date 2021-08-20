@@ -46,9 +46,9 @@ let months = [
 ];
 
 let currentTime = document.querySelector(".current-time");
-currentTime.innerHTML = `${days[currentDay]}, ${
-  months[currentMonth]
-} ${currentDate} ${getFullHour()}:${getFullMinutes()}`;
+currentTime.innerHTML = `${days[day]}, ${
+  months[month]
+} ${date} ${getFullHour()}:${getFullMinutes()}`;
 
 function convertCelsiusTemp(event) {
   event.preventDefault();
@@ -93,12 +93,17 @@ function showTemperatureInfo(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
-  );
+  ); // convert from m/s to km/h
   document.querySelector("#wind-gust").innerHTML = Math.round(
     response.data.wind.gust * 3.6
-  );
+  ); // convert from m/s to km/h
   document.querySelector("#visibility").innerHTML =
-    response.data.visibility / 1000;
+    response.data.visibility / 1000; // convert from m/s to km/h
+
+  let sunriseTime = new Date(
+    (response.data.sys.sunrise + response.data.timezone) * 1000
+  ); // get the
+  console.log(sunriseTime);
 }
 
 function searchCity(event) {
