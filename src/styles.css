@@ -1,24 +1,38 @@
 body {
-  background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background: white;
 }
 
 .entire-content {
-  padding: 50px;
-  margin: 50px auto;
+  padding: 30px;
+  margin: 30px;
   max-width: 750px;
   border: 2px solid rgb(65, 65, 97);
   border-radius: 10px;
   font-family: "Merienda";
+  background: linear-gradient(
+    109.6deg,
+    rgb(204, 228, 247) 11.2%,
+    rgb(237, 246, 250) 100.2%
+  );
 }
 
-.current-time {
-  font-size: 13px;
-  padding-bottom: 5px;
+h3 {
+  padding-bottom: 10px;
 }
 
 .search-bar {
   padding: 10px;
   text-align: center;
+}
+
+#search-bar {
+  background-color: #e7e8f5;
+  border-radius: 10px;
+}
+
+#search-button {
+  background-color: #769fcd;
+  border-radius: 10px;
 }
 
 .additional-info {
@@ -30,12 +44,18 @@ body {
 
 .searched-city {
   font-size: 30px;
-  padding-top: 20px;
-  margin-bottom: 0;
+  padding-top: 15px;
+  margin-bottom: 8px;
 }
 
 #weather-description {
   font-size: 13px;
+  text-transform: capitalize;
+}
+
+#weather-icon {
+  position: relative;
+  bottom: 15px;
 }
 
 #current-temp {
@@ -44,7 +64,7 @@ body {
 }
 
 .temp-units {
-  padding-top: 30px;
+  padding-top: 25px;
   text-align: center;
 }
 
@@ -54,6 +74,10 @@ body {
 
 #fahrenheit-temp {
   text-decoration: none;
+}
+
+.current-time {
+  font-size: 13px;
 }
 
 .next-5-days {

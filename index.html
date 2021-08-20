@@ -19,9 +19,8 @@
       <div class="container">
         <div class="search-bar">
           <h3>
-            Current Location: <span id="current-location">Toronto, ON</span>
+            Current Location: <span id="current-location"></span>
           </h3>
-          <div class="current-time"></div>
           <form id="search-form">
             <div class="row">
               <div class="col-10">
@@ -35,7 +34,7 @@
               </div>
               <div class="col-2">
                 <input
-                  class="btn btn-dark"
+                  class="btn"
                   id="search-button"
                   type="submit"
                   value="Search"
@@ -57,14 +56,14 @@
           </div>
           <div class="col-7">
             <div class="row">
-              <div class="searched-city">Hanoi, Vietnam</div>
+              <div class="searched-city">Toronto</div>
               <div id="weather-description">Clear Sky</div>
               <div>
-                <img src="" id="weather-icon" />
-                <strong id="current-temp">33°C</strong> Feels like
+                <img src="http://openweathermap.org/img/wn/10n@2x.png" id="weather-icon" />
+                <strong id="current-temp">33°C</strong> <span style=font-size:12px;">Feels like
                 <span id="feels-like-temp">38°C</span> <br />
-                <span style=font-size:12px;">Last update at</span>
-                <span class="current-time">July 20th, 2021 at 9pm EST</span>
+                Last update at</span>
+                <span class="current-time"></span>
               </div>
             </div>
           </div>
