@@ -17,45 +17,35 @@
   <body>
     <div class="entire-content">
       <div class="container">
-        <div class="row">
-          <div class="search-bar">
-            <h3>
-              Current Location: <span id="current-location">Toronto, ON</span>
-            </h3>
-            <div class="current-time"></div>
-            <form id="search-form">
-              <div class="row">
-                <div class="col-8">
-                  <input
-                    class="form-control mr-sm-2"
-                    id="search-bar"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                </div>
-                <div class="col-2">
-                  <input
-                    class="btn btn-dark"
-                    id="search-button"
-                    type="submit"
-                    value="Search"
-                  />
-                </div>
-                <div class="col-2">
-                  <input
-                    class="btn btn-light"
-                    id="current-button"
-                    type="submit"
-                    value="Current"
-                  />
-                </div>
+        <div class="search-bar">
+          <h3>
+            Current Location: <span id="current-location">Toronto, ON</span>
+          </h3>
+          <div class="current-time"></div>
+          <form id="search-form">
+            <div class="row">
+              <div class="col-10">
+                <input
+                  class="form-control mr-sm-2"
+                  id="search-bar"
+                  type="search"
+                  placeholder="Search a city ..."
+                  aria-label="Search"
+                />
               </div>
-            </form>
-          </div>
+              <div class="col-2">
+                <input
+                  class="btn btn-dark"
+                  id="search-button"
+                  type="submit"
+                  value="Search"
+                />
+              </div>
+            </div>
+          </form>
         </div>
         <div class="row">
-          <div class="col-4">
+          <div class="col-3">
             <ul class="additional-info">
               <li>🌅 Sunrise: <span id="sunrise">05:30</span></li>
               <li>🌄 Sunset: <span id="sunset">17:00</span></li>
@@ -65,14 +55,17 @@
               <li>🛣 Visibility: <span id="visibility">20km/h</span></li>
             </ul>
           </div>
-          <div class="col-6">
+          <div class="col-7">
             <div class="row">
-              <p class="searched-city">Hanoi, Vietnam</p>
-              <span>
-                <strong id="current-temp">33°C</strong>
-                Feels like <span id="feels-like-temp">38°C</span> <br />
-                Last update July 20th, 2021 at 9pm EST
-              </span>
+              <div class="searched-city">Hanoi, Vietnam</div>
+              <div id="weather-description">Clear Sky</div>
+              <div>
+                <img src="" id="weather-icon" />
+                <strong id="current-temp">33°C</strong> Feels like
+                <span id="feels-like-temp">38°C</span> <br />
+                <span style=font-size:12px;">Last update at</span>
+                <span class="current-time">July 20th, 2021 at 9pm EST</span>
+              </div>
             </div>
           </div>
           <div class="col-2 temp-units">
