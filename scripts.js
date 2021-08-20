@@ -1,23 +1,23 @@
 let now = new Date();
 
-let currentDay = now.getDay();
-let currentDate = now.getDate();
-let currentMonth = now.getMonth();
-let currentHour = now.getHours();
-let currentMinute = now.getMinutes();
+let day = now.getDay();
+let date = now.getDate();
+let month = now.getMonth();
+let hour = now.getHours();
+let minute = now.getMinutes();
 
 function getFullMinutes() {
-  if (currentMinute < 10) {
-    return "0" + currentMinute;
+  if (minute < 10) {
+    return "0" + minute;
   }
-  return currentMinute;
+  return minute;
 }
 
 function getFullHour() {
-  if (currentHour < 10) {
-    return "0" + currentHour;
+  if (hour < 10) {
+    return "0" + hour;
   }
-  return currentHour;
+  return hour;
 }
 
 let days = [
@@ -84,6 +84,21 @@ function showTemperatureInfo(response) {
   document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
     response.data.main.feels_like
   )}°C`;
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed * 3.6
+  );
+  document.querySelector("#wind-gust").innerHTML = Math.round(
+    response.data.wind.gust * 3.6
+  );
+  document.querySelector("#visibility").innerHTML =
+    response.data.visibility / 1000;
 }
 
 function searchCity(event) {
