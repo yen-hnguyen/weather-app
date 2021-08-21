@@ -17,13 +17,13 @@ body .container {
   max-width: 600px;
 }
 
-h3 {
-  padding-bottom: 15px;
-}
-
 .search-bar {
   padding: 10px;
   text-align: center;
+}
+
+h3 {
+  padding: 20px;
 }
 
 #search-bar {
