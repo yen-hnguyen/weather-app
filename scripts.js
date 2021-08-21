@@ -50,39 +50,19 @@ currentTime.innerHTML = `${days[day]}, ${
   months[month]
 } ${date} ${getFullHour()}:${getFullMinutes()}`;
 
-function convertCelsiusTemp(event) {
-  event.preventDefault();
-  let currentCelsiusTemp = document.querySelector("#current-temp");
-  currentCelsiusTemp.innerHTML = "33°C";
-  let feelsLikeCelsiusTemp = document.querySelector("#feels-like-temp");
-  feelsLikeCelsiusTemp.innerHTML = "40°C";
-}
-
-let convertToCelsius = document.querySelector("#celsius-temp");
-convertToCelsius.addEventListener("click", convertCelsiusTemp);
-
-function convertFahrenheitTemp(event) {
-  event.preventDefault();
-  let currentFahrenheitTemp = document.querySelector("#current-temp");
-  currentFahrenheitTemp.innerHTML = "78°F";
-  let feelsLikeFahrenheitTemp = document.querySelector("#feels-like-temp");
-  feelsLikeFahrenheitTemp.innerHTML = "87°F";
-}
-
-let convertToFahrenheit = document.querySelector("#fahrenheit-temp");
-convertToFahrenheit.addEventListener("click", convertFahrenheitTemp);
-
 function showTemperatureInfo(response) {
   console.log(response);
+  celciusTemp = response.data.main.temp;
+  celciusFeelsLikeTemp = response.data.main.feels_like;
   document.querySelector("#current-location").innerHTML = response.data.name;
   document.querySelector(".searched-city").innerHTML = response.data.name;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
   document.querySelector("#current-temp").innerHTML = `${Math.round(
-    response.data.main.temp
+    celciusTemp
   )}°C`;
   document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
-    response.data.main.feels_like
+    celciusFeelsLikeTemp
   )}°C`;
   document
     .querySelector("#weather-icon")
@@ -94,16 +74,8 @@ function showTemperatureInfo(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   ); // convert from m/s to km/h
-  document.querySelector("#wind-gust").innerHTML = Math.round(
-    response.data.wind.gust * 3.6
-  ); // convert from m/s to km/h
   document.querySelector("#visibility").innerHTML =
     response.data.visibility / 1000; // convert from m/s to km/h
-
-  let sunriseTime = new Date(
-    (response.data.sys.sunrise + response.data.timezone) * 1000
-  ); // get the
-  console.log(sunriseTime);
 }
 
 function searchCity(event) {
@@ -133,5 +105,38 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(displayPosition);
 }
+
+let celciusTemp = null;
+let celciusFeelsLikeTemp = null;
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  convertToFahrenheit.classList.remove("active");
+  convertToCelsius.classList.add("active");
+  document.querySelector("#current-temp").innerHTML = `${Math.round(
+    celciusTemp
+  )}°C`;
+  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
+    celciusFeelsLikeTemp
+  )}°C`;
+}
+
+let convertToCelsius = document.querySelector("#celsius-temp");
+convertToCelsius.addEventListener("click", displayCelsiusTemp);
+
+function convertToFahrenheitTemp(event) {
+  event.preventDefault();
+  convertToCelsius.classList.remove("active");
+  convertToFahrenheit.classList.add("active");
+  document.querySelector("#current-temp").innerHTML = `${Math.round(
+    (celciusTemp * 9) / 5 + 32
+  )}°F`;
+  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
+    (celciusFeelsLikeTemp * 9) / 5 + 32
+  )}°F`;
+}
+
+let convertToFahrenheit = document.querySelector("#fahrenheit-temp");
+convertToFahrenheit.addEventListener("click", convertToFahrenheitTemp);
 
 window.onload = getCurrentLocation;

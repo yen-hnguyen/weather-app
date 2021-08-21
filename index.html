@@ -16,11 +16,9 @@
   </head>
   <body>
     <div class="entire-content">
-      <div class="container">
+      <div class="container box">
         <div class="search-bar">
-          <h3>
-            Current Location: <span id="current-location"></span>
-          </h3>
+          <h3>Current Location: <span id="current-location"></span></h3>
           <form id="search-form">
             <div class="row">
               <div class="col-10">
@@ -46,32 +44,38 @@
         <div class="row">
           <div class="col-3">
             <ul class="additional-info">
-              <li>🌅 Sunrise: <span id="sunrise">05:30</span></li>
-              <li>🌄 Sunset: <span id="sunset">17:00</span></li>
+              <!--<li>🌅 Sunrise: <span id="sunrise">05:30</span></li>
+              <li>🌄 Sunset: <span id="sunset">17:00</span></li>-->
               <li>💧 Humidity: <span id="humidity">54</span>%</li>
               <li>🌬 Wind: <span id="wind">15</span>km/h</li>
-              <li>💨 Wind Gust: <span id="wind-gust">20</span>km/h</li>
               <li>🛣 Visibility: <span id="visibility">20</span>km</li>
             </ul>
           </div>
           <div class="col-7">
-            <div class="row">
-              <div class="searched-city">Toronto</div>
-              <div id="weather-description">Clear Sky</div>
-              <div>
-                <img src="http://openweathermap.org/img/wn/10n@2x.png" id="weather-icon" alt="Clear" />
-                <strong id="current-temp">33°C</strong> <span style=font-size:12px;">Feels like
-                <span id="feels-like-temp">38°C</span> <br />
-                Last update at</span>
-                <span class="current-time"></span>
-              </div>
+            <div class="searched-city">Toronto</div>
+            <div id="weather-description">Clear Sky</div>
+            <div>
+              <img
+                src="http://openweathermap.org/img/wn/10n@2x.png"
+                id="weather-icon"
+                alt="Clear"
+              />
+              <strong id="current-temp">33°C</strong><span
+              style=font-size:11px;">Feels like
+              <span id="feels-like-temp">38°C</span>
+            </div>
+            <div class="last-update">
+              Last update at
+              <span class="current-time"></span>
             </div>
           </div>
-          <div class="col-2 temp-units">
-            <a href="#" id="celsius-temp">°C</a> |
-            <a href="#" id="fahrenheit-temp">°F</a>
+          <div class="col-2">
+            <div class="temp-units">
+              <a href="" id="celsius-temp" class="active">°C</a> |
+              <a href="" id="fahrenheit-temp">°F</a>
+            </div>
           </div>
-          <p class="next-5-days">Forecast for the next 5 days</p>
+          <p class="next-5-days">5 Days Forecast</p>
           <div class="row">
             <div class="col weather-forecast">
               <strong>Monday</strong>
@@ -97,16 +101,16 @@
         </div>
       </div>
     </div>
+    <p class="project-info">
+      This project was coded by Yen Nguyen and is
+      <a
+        href="https://github.com/yenn11/shecodes-project"
+        target="_blank"
+        rel="noreferrer noopener"
+        >open sourced on Github</a
+      >
+      and hosted on Netlify
+    </p>
     <script src="scripts.js"></script>
   </body>
-  <p class="project-info">
-    This project was coded by Yen Nguyen and is
-    <a
-      href="https://github.com/yenn11/shecodes-project"
-      target="_blank"
-      rel="noreferrer noopener"
-      >open sourced on Github</a
-    >
-    and hosted on Netlify
-  </p>
 </html>
