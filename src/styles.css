@@ -71,10 +71,6 @@ h3 {
   align-self: flex-end;
   margin-bottom: 20px;
 }
-#weather-icon {
-  height: 80px;
-  width: 80px;
-}
 
 #current-temp {
   font-weight: bold;
@@ -103,7 +99,20 @@ h3 {
 .weather-forecast {
   text-align: center;
   padding: 10px;
-  margin: 10px;
+  vertical-align: middle;
+}
+
+.min-max-temp {
+  display: flex;
+  align-items: center;
+}
+
+.max-temp {
+  font-size: 18px;
+}
+
+.min-temp {
+  opacity: 0.7;
 }
 
 .project-info {
