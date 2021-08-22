@@ -5,6 +5,8 @@ let date = now.getDate();
 let month = now.getMonth();
 let hour = now.getHours();
 let minute = now.getMinutes();
+let time = now.getTime(); // unix time  in milliseconds
+let timeOffset = now.getTimezoneOffset() * 60000; // get timezone offset and convert from minutes to milliseconds
 
 function getFullMinutes() {
   if (minute < 10) {
@@ -45,8 +47,8 @@ let months = [
   "Dec",
 ];
 
-let currentTime = document.querySelector(".current-time");
-currentTime.innerHTML = `${days[day]}, ${
+let formatedTime = document.querySelector(".current-time");
+formatedTime.innerHTML = `${days[day]}, ${
   months[month]
 } ${date} ${getFullHour()}:${getFullMinutes()}`; //formarted date
 
@@ -79,6 +81,23 @@ function showTemperatureInfo(response) {
   document.querySelector("#visibility").innerHTML = `${Math.round(
     ((visibilityInMeter / 1000) * 10) / 10
   )} km`; // convert from m/s to km/h
+
+  let sunriseTime = new Date(
+    response.data.sys.sunrise * 1000 +
+      response.data.timezone * 1000 +
+      timeOffset
+  );
+  let sunsetTime = new Date(
+    response.data.sys.sunset * 1000 + response.data.timezone * 1000 + timeOffset
+  );
+  document.querySelector("#sunrise").innerHTML = sunriseTime.toLocaleTimeString(
+    [],
+    { hourCycle: "h23", hour: "2-digit", minute: "2-digit" }
+  );
+  document.querySelector("#sunset").innerHTML = sunsetTime.toLocaleTimeString(
+    [],
+    { hourCycle: "h23", hour: "2-digit", minute: "2-digit" }
+  );
 }
 
 function showCurrentLocation(response) {
