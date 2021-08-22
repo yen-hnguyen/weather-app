@@ -7,6 +7,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-family: "Merienda";
   background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  color: #46494e;
 }
 
 body .container {
@@ -33,6 +34,7 @@ h3 {
   background-color: #769fcd;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: #46494e;
 }
 
 .additional-info {
@@ -40,6 +42,12 @@ h3 {
   line-height: 30px;
   font-size: 12px;
   padding: 40px 0;
+}
+
+.icons {
+  height: 20px;
+  width: 20px;
+  position: relative;
 }
 
 .searched-city {
@@ -53,14 +61,23 @@ h3 {
   text-transform: capitalize;
 }
 
-img {
-  position: relative;
-  bottom: 17px;
+.weather-info {
+  display: flex;
+  align-items: center;
+}
+
+.real-feel {
+  font-size: 11px;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+#weather-icon {
   height: 80px;
   width: 80px;
 }
 
 #current-temp {
+  font-weight: bold;
   font-size: 70px;
   padding: 0;
 }
@@ -75,7 +92,7 @@ img {
 }
 
 .temp-units .active {
-  color: rgb(65, 65, 97);
+  color: #46494e;
 }
 
 .last-update {
