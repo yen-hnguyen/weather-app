@@ -22,35 +22,36 @@ function getFullHour() {
   return hour;
 } // to make sure hour is always 2 digits
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 let formatedTime = document.querySelector(".current-time");
 formatedTime.innerHTML = `${days[day]}, ${
   months[month]
 } ${date} ${getFullHour()}:${getFullMinutes()}`; //formarted date
+
+function showWeatherForecast(response) {
+  console.log(response);
+  document.querySelector(".weather-forecast").innerHTML = `<div class="row">
+              <div class="col-2">
+                <strong>${response.data.daily[0].dt}</strong>
+                <img
+                  src="http://openweathermap.org/img/wn/10n@2x.png"
+                  id="mini-weather-icon"
+                  alt="Clear"
+                />
+                30°C 40°C
+              </div>
+            </div>`;
+}
+
+function getWeatherForecast(coordinates) {
+  let apiKey = "6205aed09d3502bfb77cd3492c5fda5d";
+  let apiUrl3 = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+
+  axios.get(apiUrl3).then(showWeatherForecast);
+}
 
 function showTemperatureInfo(response) {
   console.log(response);
@@ -60,14 +61,9 @@ function showTemperatureInfo(response) {
   visibilityInMeter = response.data.visibility;
 
   document.querySelector(".searched-city").innerHTML = response.data.name;
-  document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].description;
-  document.querySelector("#current-temp").innerHTML = `${Math.round(
-    celciusTemp
-  )}°C`;
-  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
-    celciusFeelsLikeTemp
-  )}°C`;
+  document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
+  document.querySelector("#current-temp").innerHTML = `${Math.round(celciusTemp)}°C`;
+  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(celciusFeelsLikeTemp)}°C`;
   document
     .querySelector("#weather-icon")
     .setAttribute(
@@ -75,29 +71,29 @@ function showTemperatureInfo(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = `${Math.round(
-    windSpeedInMeter * 3.6
-  )} km/h`; // convert from m/s to km/h
+  document.querySelector("#wind").innerHTML = `${Math.round(windSpeedInMeter * 3.6)} km/h`; // convert from m/s to km/h
   document.querySelector("#visibility").innerHTML = `${Math.round(
     ((visibilityInMeter / 1000) * 10) / 10
   )} km`; // convert from m/s to km/h
 
   let sunriseTime = new Date(
-    response.data.sys.sunrise * 1000 +
-      response.data.timezone * 1000 +
-      timeOffset
+    response.data.sys.sunrise * 1000 + response.data.timezone * 1000 + timeOffset
   );
   let sunsetTime = new Date(
     response.data.sys.sunset * 1000 + response.data.timezone * 1000 + timeOffset
   );
-  document.querySelector("#sunrise").innerHTML = sunriseTime.toLocaleTimeString(
-    [],
-    { hourCycle: "h23", hour: "2-digit", minute: "2-digit" }
-  );
-  document.querySelector("#sunset").innerHTML = sunsetTime.toLocaleTimeString(
-    [],
-    { hourCycle: "h23", hour: "2-digit", minute: "2-digit" }
-  );
+  document.querySelector("#sunrise").innerHTML = sunriseTime.toLocaleTimeString([], {
+    hourCycle: "h23",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  document.querySelector("#sunset").innerHTML = sunsetTime.toLocaleTimeString([], {
+    hourCycle: "h23",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  getWeatherForecast(response.data.coord);
 }
 
 function showCurrentLocation(response) {
@@ -143,12 +139,8 @@ function displayCelsiusTemp(event) {
   event.preventDefault();
   convertToFahrenheit.classList.remove("active");
   convertToCelsius.classList.add("active");
-  document.querySelector("#current-temp").innerHTML = `${Math.round(
-    celciusTemp
-  )}°C`;
-  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
-    celciusFeelsLikeTemp
-  )}°C`;
+  document.querySelector("#current-temp").innerHTML = `${Math.round(celciusTemp)}°C`;
+  document.querySelector("#feels-like-temp").innerHTML = `${Math.round(celciusFeelsLikeTemp)}°C`;
   document.querySelector("#wind").innerHTML = `${
     Math.round(windSpeedInMeter * 3.6 * 10) / 10
   } km/h`; // convert from m/s to km/h and round to 1 decimal place
@@ -165,9 +157,7 @@ function convertToFahrenheitTemp(event) {
   event.preventDefault();
   convertToCelsius.classList.remove("active");
   convertToFahrenheit.classList.add("active");
-  document.querySelector("#current-temp").innerHTML = `${Math.round(
-    (celciusTemp * 9) / 5 + 32
-  )}°F`;
+  document.querySelector("#current-temp").innerHTML = `${Math.round((celciusTemp * 9) / 5 + 32)}°F`;
   document.querySelector("#feels-like-temp").innerHTML = `${Math.round(
     (celciusFeelsLikeTemp * 9) / 5 + 32
   )}°F`;
