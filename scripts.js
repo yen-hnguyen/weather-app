@@ -33,17 +33,28 @@ formatedTime.innerHTML = `${days[day]}, ${
 
 function showWeatherForecast(response) {
   console.log(response);
-  document.querySelector(".weather-forecast").innerHTML = `<div class="row">
+
+  let forecastElement = document.querySelector(".weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  days.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML += `
               <div class="col-2">
-                <strong>${response.data.daily[0].dt}</strong>
+                <strong>${day}</strong>
                 <img
                   src="http://openweathermap.org/img/wn/10n@2x.png"
                   id="mini-weather-icon"
                   alt="Clear"
                 />
                 30°C 40°C
-              </div>
-            </div>`;
+              </div>`;
+    }
+  });
+
+  forecastHTML += `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function getWeatherForecast(coordinates) {
@@ -54,7 +65,6 @@ function getWeatherForecast(coordinates) {
 }
 
 function showTemperatureInfo(response) {
-  console.log(response);
   celciusTemp = response.data.main.temp;
   celciusFeelsLikeTemp = response.data.main.feels_like;
   windSpeedInMeter = response.data.wind.speed;
